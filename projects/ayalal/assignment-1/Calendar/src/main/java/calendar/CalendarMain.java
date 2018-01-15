@@ -127,7 +127,7 @@ public class CalendarMain {
 			System.out.println("The Appointments are not sorted!");
          	System.out.println(listAppts.toString());
 	
-            Collections.sort(listAppts);
+            Collections.shuffle(listAppts);
 			System.out.println("The Appointments are sorted!");
          	System.out.println(listAppts.toString());
             
