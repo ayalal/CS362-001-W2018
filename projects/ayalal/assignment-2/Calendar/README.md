@@ -1,2 +1,2 @@
 # CS362-001-W2018
-The Calendar is a Java application that provides classes and methods for storing diffirent appointments.
+This is my submission for assingment-2 which includes a test suite for our calendar application.
