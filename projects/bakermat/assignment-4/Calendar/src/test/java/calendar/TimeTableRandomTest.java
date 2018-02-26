@@ -57,19 +57,14 @@ public class TimeTableRandomTest {
      */
 	 @Test
 	  public void radnomtest()  throws Throwable  {
-
 		 long startTime = Calendar.getInstance().getTimeInMillis();
 		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
-
-		 
 		 System.out.println("Start testing...");
-		 
 		try{ 
 			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 				long randomseed =System.currentTimeMillis(); //10
 	//			System.out.println(" Seed:"+randomseed );
 				Random random = new Random(randomseed);
-				
 				 int startHour=ValuesGenerator.RandInt(random);
 				 int startMinute=ValuesGenerator.RandInt(random);
 				 int startDay=ValuesGenerator.RandInt(random);;
@@ -101,28 +96,18 @@ public class TimeTableRandomTest {
 				//		   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 				//		}				
 				}
-				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )
 			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-			 
 			}
 		}catch(NullPointerException e){
-			
-		}
-	 
-		 System.out.println("Done testing...");
+		} System.out.println("Done testing...");
 	 }
-
 	 @Test
 	  public void radnomtestREMOVE()  throws Throwable  {
-
 		 long startTime = Calendar.getInstance().getTimeInMillis();
 		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
-
-		 
 		 System.out.println("Start testing...");
-		 
 		try{ 
 			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 				long randomseed =System.currentTimeMillis(); //10
@@ -151,6 +136,7 @@ public class TimeTableRandomTest {
                 } else {
                     LinkedList<Appt> aAppts = new LinkedList<Appt>();
                     int nAppts = ValuesGenerator.RandInt(random);
+                    int rem = ValuesGenerator.getRandomIntBetween(random, 0, nAppts);
                     for (int i = 0; i < nAppts; i ++) {
                      int startHour=ValuesGenerator.RandInt(random);
                      int startMinute=ValuesGenerator.RandInt(random);
@@ -169,18 +155,6 @@ public class TimeTableRandomTest {
                              description);
                      aAppts.add(appt);
                     }
-                    //int rem = ValuesGenerator.getRandomIntBetween(random, 0, nAppts);
-                    //for (int i = 0; i < rem-1; i++) {
-                    //    int rL = ValuesGenerator.getRandomIntBetween(random, 0, aAppts.size()-1);
-                    //    if (rL == rem) {
-                    //        testingThing.deleteAppt(aAppts, null);
-                    //    } else {
-                    //        testingThing.deleteAppt(aAppts, aAppts.get(rL));
-                    //    }
-                    //}
-
-                }
-				
 			//for (int i = 0; i < NUM_TESTS; i++) {
 			//		String methodName = ApptRandomTest.RandomSelectMethod(random);
 			//		   if (methodName.equals("setTitle")){
@@ -196,28 +170,24 @@ public class TimeTableRandomTest {
 			//			   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 			//			}				
 			//	}
-				
+                    int j = 0;
+                    for (j = 0; j < rem-1; j++) {
+                        int r = ValuesGenerator.getRandomIntBetween(random, 0, aAppts.size()-1);
+                        if (r == rem) { testingThing.deleteAppt(aAppts, null);
+                        } else { testingThing.deleteAppt(aAppts, aAppts.get(r)); }}}
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )
 			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-			 
 			}
 		}catch(NullPointerException e){
-			
 		}
-	 
 		 System.out.println("Done testing...");
 	 }
-	
 	 @Test
 	  public void radnomtestRANGENAUGHT()  throws Throwable  {
-
 		 long startTime = Calendar.getInstance().getTimeInMillis();
 		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
-
-		 
 		 System.out.println("Start testing...");
-		 
 		try{ 
 			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 				long randomseed =System.currentTimeMillis(); //10
@@ -227,14 +197,12 @@ public class TimeTableRandomTest {
                 int dONE = ValuesGenerator.getRandomIntBetween(random, -30, 60);
                 int mONE = ValuesGenerator.getRandomIntBetween(random, 1, 11);
                 int yONE = ValuesGenerator.RandInt(random); // no error checking
-
-                int dTWO = ValuesGenerator.getRandomIntBetween(random, -30, 60);
-                int mTWO = ValuesGenerator.getRandomIntBetween(random, 1, 11);
-                int yTWO = yONE + 25;
+                    int dTWO = ValuesGenerator.getRandomIntBetween(random, -30, 60);
+                    int mTWO = ValuesGenerator.getRandomIntBetween(random, 1, 11);
+                    int yTWO = yONE + 2;
                 GregorianCalendar cONE = new GregorianCalendar(yONE, mONE, dONE);
-                GregorianCalendar cTWO = new GregorianCalendar(yTWO, mTWO, dTWO);
+                    GregorianCalendar cTWO = new GregorianCalendar(yTWO, mTWO, dTWO);
                 LinkedList<Appt> aAppts = new LinkedList<Appt>();
-
                 int nAppts = ValuesGenerator.RandInt(random);
                 for (int i = 0; i < nAppts; i++) {
 				 int startHour=ValuesGenerator.RandInt(random);
@@ -253,7 +221,6 @@ public class TimeTableRandomTest {
 				          title,
 				         description);
                  aAppts.add(appt);
-
 			for (int j = 0; j < NUM_TESTS; j++) {
 					String methodName = ApptRandomTest.RandomSelectMethod(random);
 					   if (methodName.equals("setTitle")){
@@ -269,31 +236,22 @@ public class TimeTableRandomTest {
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 						}				
 				}
+            // ERROR OUT OF RANGE
             //LinkedList<CalDay> aRange = tT.getApptRange(aAppts, cONE, cTWO);
-                
-				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )
 			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-			 
                 }
 			}
 		}catch(NullPointerException e){
-			
 		}
-	 
 		 System.out.println("Done testing...");
 	 }
-
 	 @Test
 	  public void radnomtestRANGENAUGHT_()  throws Throwable  {
-
 		 long startTime = Calendar.getInstance().getTimeInMillis();
 		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
-
-		 
 		 System.out.println("Start testing...");
-		 
 		try{ 
 			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 				long randomseed =System.currentTimeMillis(); //10
@@ -303,14 +261,12 @@ public class TimeTableRandomTest {
                 int dONE = ValuesGenerator.getRandomIntBetween(random, -30, 60);
                 int mONE = ValuesGenerator.getRandomIntBetween(random, 1, 11);
                 int yONE = ValuesGenerator.RandInt(random); // no error checking
-
-                int dTWO = ValuesGenerator.getRandomIntBetween(random, -30, 60);
-                int mTWO = ValuesGenerator.getRandomIntBetween(random, 1, 11);
-                int yTWO = ValuesGenerator.RandInt(random);
+                    int dTWO = ValuesGenerator.getRandomIntBetween(random, -30, 60);
+                    int mTWO = ValuesGenerator.getRandomIntBetween(random, 1, 11);
+                    int yTWO = ValuesGenerator.RandInt(random);
                 GregorianCalendar cONE = new GregorianCalendar(yONE, mONE, dONE);
-                GregorianCalendar cTWO = new GregorianCalendar(yTWO, mTWO, dTWO);
+                    GregorianCalendar cTWO = new GregorianCalendar(yTWO, mTWO, dTWO);
                 //LinkedList<Appt> aAppts = new LinkedList<Appt>();
-
                 //int nAppts = ValuesGenerator.RandInt(random);
                 //for (int i = 0; i < nAppts; i++) {
 				// int startHour=ValuesGenerator.RandInt(random);
@@ -329,7 +285,6 @@ public class TimeTableRandomTest {
 				//          title,
 				//         description);
                 // aAppts.add(appt);
-
 			//for (int j = 0; j < NUM_TESTS; j++) {
 			//		String methodName = ApptRandomTest.RandomSelectMethod(random);
 			//		   if (methodName.equals("setTitle")){
@@ -346,36 +301,25 @@ public class TimeTableRandomTest {
 			//			}				
 			//	}
             //    //LinkedList<CalDay> aRange = tT.getApptRange(aAppts, cONE, cTWO);
-                
-				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )
 			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-			 
                 //}
 			}
 		}catch(NullPointerException e){
-			
 		}
-	 
 		 System.out.println("Done testing...");
 	 }
-
 	 @Test
 	  public void radnomtestRANGE()  throws Throwable  {
-
 		 long startTime = Calendar.getInstance().getTimeInMillis();
 		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
-
-		 
 		 System.out.println("Start testing...");
-		 
 		try{ 
 			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 				long randomseed =System.currentTimeMillis(); //10
 	//			System.out.println(" Seed:"+randomseed );
 				Random random = new Random(randomseed);
-				
 				 int startHour=ValuesGenerator.RandInt(random);
 				 int startMinute=ValuesGenerator.RandInt(random);
 				 int startDay=ValuesGenerator.RandInt(random);;
@@ -407,34 +351,24 @@ public class TimeTableRandomTest {
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 						}				
 				}
-				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )
 			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-			 
 			}
 		}catch(NullPointerException e){
-			
 		}
-	 
 		 System.out.println("Done testing...");
 	 }
-
 	 @Test
 	  public void radnomtestTEST()  throws Throwable  {
-
 		 long startTime = Calendar.getInstance().getTimeInMillis();
 		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
-
-		 
 		 System.out.println("Start testing...");
-		 
 		try{ 
 			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 				long randomseed =System.currentTimeMillis(); //10
 	//			System.out.println(" Seed:"+randomseed );
 				Random random = new Random(randomseed);
-				
 				 int startHour=ValuesGenerator.RandInt(random);
 				 int startMinute=ValuesGenerator.RandInt(random);
 				 int startDay=ValuesGenerator.RandInt(random);;
@@ -466,16 +400,12 @@ public class TimeTableRandomTest {
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 						}				
 				}
-				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )
 			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-			 
 			}
 		}catch(NullPointerException e){
-			
 		}
-	 
 		 System.out.println("Done testing...");
 	 }
 }

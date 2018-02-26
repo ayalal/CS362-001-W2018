@@ -70,11 +70,9 @@ public class CalDayRandomTest {
 				long randomseed =System.currentTimeMillis(); //10
 	//			System.out.println(" Seed:"+randomseed );
 				Random random = new Random(randomseed);
-
                 int dONE = ValuesGenerator.getRandomIntBetween(random, -30, 60);
                 int mONE = ValuesGenerator.getRandomIntBetween(random, 1, 11);
                 int yONE = ValuesGenerator.RandInt(random);
-
                 GregorianCalendar cONE = new GregorianCalendar(yONE, mONE, dONE);
                 CalDay vCD = new CalDay(cONE);
                 CalDay iCD = new CalDay();
@@ -83,7 +81,6 @@ public class CalDayRandomTest {
                 for (int i =0; i < nAppts; i++) {
 
                 }
-				
 				 int startHour=ValuesGenerator.RandInt(random);
 				 int startMinute=ValuesGenerator.RandInt(random);
 				 int startDay=ValuesGenerator.getRandomIntBetween(random, -30, 60);
@@ -126,18 +123,12 @@ public class CalDayRandomTest {
 					//	   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
 					//	}				
 				}
-				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )
 			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-			 
 			}
 		}catch(NullPointerException e){
-			
 		}
-	 
 		 System.out.println("Done testing...");
 	 }
-
-
 }
