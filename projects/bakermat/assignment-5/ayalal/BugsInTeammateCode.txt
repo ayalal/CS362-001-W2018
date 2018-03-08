@@ -1,0 +1,21 @@
+Report on the bugs I found in Lorenzo's code.
+
+Bug 1:
+    Inside the Appt class on line 113 within Appt.java I found that the check on the startMonth should be -1,
+    instead of just having no subtraction on there. The code from Lorenzo iterates out of bounds when testing the
+    boundary cases for the months.
+
+Bug 2:
+    The second bug I found was on line 284 again in the Appt class. On that line the printable hour is set to
+    += 12 instead of -= 12 like it should be. I found this bug through testing the hours of a particular appt.
+
+Bug 3:
+    In the CalDay class in CalDay.java on line 77 the statement currently says that:
+        if (((Appt)getAppts().get())).getStartHour() is checked against < instead of the correct >. This causes
+    the start hour of a particular appointment not to be checked properly.
+
+Bug 4:
+    In the TimeTable class in TimeTable.java there is a conditional on line 39 that checks if the first day is
+    before the last day: if(firstDay.before(lastDay)), this should really be implemented as a negated conditional
+    like so: if(!firstDay.before(lastDay)). I found this bug by adding two different appointments and checking
+    their dates. The wrong appointments would be allowed.
