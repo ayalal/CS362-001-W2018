@@ -89,7 +89,7 @@ public class Appt implements  Comparable<Appt>{
     {
         //Sets all instance variables 
     	this.startHour = startHour;
-    	this.startMinute = startHour; 
+    	this.startMinute = startMinute; 
     	this.startDay = startDay; 
     	this.startMonth = startMonth;
     	this.startYear = startYear; 
