@@ -38,13 +38,13 @@ public class TimeTableTest {
 
         // The following fails because of the bug I added <= on line 53 of TimeTable.java
         // This is one of the bugs that comes from assignment 1
-        //t.getApptRange(listAppts, day1, day2);
-        //t.getApptRange(listAppts, day2, day1);
+        t.getApptRange(listAppts, day1, day2);
+        t.getApptRange(listAppts, day2, day1);
 
         GregorianCalendar day3 = new GregorianCalendar(2017, 1, 1);
         GregorianCalendar day4 = new GregorianCalendar(2018, 1, 1);
         TimeTable m = new TimeTable();
-        //assertEquals(t.getApptRange(listAppts, day1, day2), m.getApptRange(listAppts, day3, day4));
+        assertEquals(t.getApptRange(listAppts, day1, day2), m.getApptRange(listAppts, day3, day4));
 
 
         t.deleteAppt(listAppts, appt1);
@@ -81,7 +81,7 @@ public class TimeTableTest {
 
         // The following fails because of the bug I added <= on line 53 of TimeTable.java
         // Assignment 1 bug
-        //t.getApptRange(listAppts, day1, day2);
+        t.getApptRange(listAppts, day1, day2);
 
 	 }
 
@@ -123,7 +123,7 @@ public class TimeTableTest {
         TimeTable two = new TimeTable();
         assertSame(one, one);
 
-        //assertNotNull(two.getApptRange(listAppts, day3, day4));
+        assertNotNull(two.getApptRange(listAppts, day3, day4));
         assertNotSame(one, appt);
       }
 
@@ -172,20 +172,20 @@ public class TimeTableTest {
 		 description="party on wayne";
 		 //Construct a new Appointment object with the initial data	 
 		 Appt appt = new Appt(startHour,startMinute ,startDay ,startMonth ,startYear ,title,description);
-		 //Appt appt3 = new Appt(startHour,startMinute ,startDay ,startMonth ,startYear ,title,description);
-		 //Appt appt4 = new Appt(startHour,startMinute ,startDay ,startMonth ,startYear ,title,description);
+		 Appt appt3 = new Appt(startHour,startMinute ,startDay ,startMonth ,startYear ,title,description);
+		 Appt appt4 = new Appt(startHour,startMinute ,startDay ,startMonth ,startYear ,title,description);
 
          appt.setStartHour(23);
          assertEquals(23, appt.getStartHour());
 
          // Next one fails because of bug from assignment 1
          appt.setStartMinute(10);
-         //appt.setStartDay(5);
-         //assertEquals(5, appt.getStartDay());
-         //appt.setStartMonth(10);
-         //assertEquals(10, appt.getStartMonth());
-         //appt.setStartYear(2018);
-         //assertEquals(2018, appt.getStartYear());
+         appt.setStartDay(5);
+         assertEquals(5, appt.getStartDay());
+         appt.setStartMonth(10);
+         assertEquals(10, appt.getStartMonth());
+         appt.setStartYear(2018);
+         assertEquals(2018, appt.getStartYear());
 
          // Next two fail because of bugs from assignment 1
          appt.setTitle("hello");
@@ -203,6 +203,6 @@ public class TimeTableTest {
 
          // Fails as a result of a bug from assignment 1
          appt.getRecurDays();
-         //assertEquals(null, appt.getRecurDays());
+         assertEquals(null, appt.getRecurDays());
     }
 }

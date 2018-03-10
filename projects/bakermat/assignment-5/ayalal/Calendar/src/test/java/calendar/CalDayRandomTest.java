@@ -196,32 +196,32 @@ public class CalDayRandomTest {
 				          startYear ,
 				          title,
 				         description);
-				// Appt appt2 = new Appt(startHour+5,
-				//          startMinute ,
-				//          startDay ,
-				//          startMonth ,
-				//          startYear ,
-				//          title,
-				//         description);
-                // aAppts.add(appt2);
+				 Appt appt2 = new Appt(startHour+5,
+				          startMinute ,
+				          startDay ,
+				          startMonth ,
+				          startYear ,
+				          title,
+				         description);
+                 aAppts.add(appt2);
                  aAppts.add(appt);
                  for (int k = 0; k < aAppts.size(); k++) {
                      vCD.addAppt(aAppts.get(k));
                  }
 			for (int i = 0; i < NUM_TESTS; i++) {
 					String methodName = ApptRandomTest.RandomSelectMethod(random);
-				//	   if (methodName.equals("setTitle")){
-				//		   String newTitle=(String) ValuesGenerator.getString(random);
-				//		   appt.setTitle(newTitle);						   
-				//		}
-					//   else if (methodName.equals("setRecurrence")){
-					//	   int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
-					//	   int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
-					//	   int recur=ApptRandomTest.RandomSelectRecur(random);
-					//	   int recurIncrement = ValuesGenerator.RandInt(random);
-					//	   int recurNumber=ApptRandomTest.RandomSelectRecurForEverNever(random);
-					//	   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
-					//	}				
+				  if (methodName.equals("setTitle")){
+				      String newTitle=(String) ValuesGenerator.getString(random);
+				      appt.setTitle(newTitle);						   
+				   }
+				   else if (methodName.equals("setRecurrence")){
+					   int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
+					   int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
+					   int recur=ApptRandomTest.RandomSelectRecur(random);
+					   int recurIncrement = ValuesGenerator.RandInt(random);
+					   int recurNumber=ApptRandomTest.RandomSelectRecurForEverNever(random);
+					   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
+					}				
 				}
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
 			        if((iteration%10000)==0 && iteration!=0 )

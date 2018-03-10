@@ -47,8 +47,8 @@ public class CalDayTest {
         // Create linked list to hold appoints and add three to the list
         LinkedList<Appt> listAppts = new LinkedList<Appt>();
         listAppts.add(appt);
-        //listAppts.add(appt1);
-        //listAppts.add(appt2);
+        listAppts.add(appt1);
+        listAppts.add(appt2);
 
         // Create two valid gregorian calendars
         GregorianCalendar today = new GregorianCalendar(2018, 1, 24);
@@ -81,18 +81,18 @@ public class CalDayTest {
         cD.addAppt(appt2);
         assertTrue(cD.valid);
 
-        //cD.getAppts();
-        //cD.iterator();
-        //cD.toString();
-        //cD.getSizeAppts();
+        cD.getAppts();
+        cD.iterator();
+        cD.toString();
+        cD.getSizeAppts();
 
-        //appt.setStartHour(40);
-        //assertEquals(40, appt.getStartHour());
-        //cD.addAppt(appt);
+        appt.setStartHour(40);
+        assertEquals(40, appt.getStartHour());
+        cD.addAppt(appt);
 
-        //cD.valid = false;
-        //assertFalse(cD.valid);
-        //cD.toString();
+        cD.valid = false;
+        assertFalse(cD.valid);
+        cD.toString();
     }
     @Test
     public void test02()  throws Throwable  {
@@ -108,8 +108,8 @@ public class CalDayTest {
         appt.setRecurrence(arr, 10, 2, 10);
 
         //This will break because of a bug
-        //appt.setStartHour(0);
-        //assertFalse(appt.getValid());
+        appt.setStartHour(0);
+        assertFalse(appt.getValid());
 
         appt.setStartHour(10);
         appt.setStartMinute(500);
@@ -124,15 +124,15 @@ public class CalDayTest {
         appt.setStartHour(10);
         appt.setStartMinute(5);
         appt.setStartDay(4);
-        //appt.setStartMonth(1); //Broken
+        appt.setStartMonth(1); //Broken
         assertTrue(appt.getValid());
 
-        //appt.setStartHour(10);
-        //appt.setStartMinute(5);
-        //appt.setStartDay(4);
-        //appt.setStartMonth(10);
-        //appt.setStartYear(2010); // Not checked
-        //assertTrue(appt.getValid());
+        appt.setStartHour(10);
+        appt.setStartMinute(5);
+        appt.setStartDay(4);
+        appt.setStartMonth(10);
+        appt.setStartYear(2010); // Not checked
+        assertTrue(appt.getValid());
 
         appt.setStartHour(25);
         appt.setStartMinute(61);
@@ -140,7 +140,7 @@ public class CalDayTest {
         appt.setStartMonth(1);
         assertFalse(appt.getValid());
 
-        //appt.setDescription("hello");
-        //assertEquals("hello", appt.getDescription());
+        appt.setDescription("hello");
+        assertEquals("hello", appt.getDescription());
     }
 }

@@ -24,23 +24,23 @@ public class ApptTest {
 	     // assertions
 		 assertTrue(appt.getValid());
 		 assertEquals(21, appt.getStartHour());
-		 //assertEquals(30, appt.getStartMinute());
+		 assertEquals(30, appt.getStartMinute());
 		 assertEquals(15, appt.getStartDay());
 		 assertEquals(01, appt.getStartMonth());
 		 assertEquals(2018, appt.getStartYear());
-		 //assertEquals("Birthday Party", appt.getTitle());
-		 //assertEquals("This is my birthday party.", appt.getDescription());         		
+		 assertEquals("Birthday Party", appt.getTitle());
+		 assertEquals("This is my birthday party.", appt.getDescription());         		
 
 		 appt.getValid();
          assertTrue(appt.getValid());
-		 //appt.getStartHour();
-         //assertEquals(21, appt.getStartHour());
+		 appt.getStartHour();
+         assertEquals(21, appt.getStartHour());
          // Start minute will fail any asserts because of the bugs from assignment 1
-		 //appt.getStartMinute();
-         //assertEquals(15, appt.getStartDay());
+		 appt.getStartMinute();
+         assertEquals(15, appt.getStartDay());
 		 appt.getStartDay();
 		 appt.getStartMonth();
-         //assertEquals(01, appt.getStartMonth());
+         assertEquals(01, appt.getStartMonth());
          // Any asserts on the following two functions will fail because of bugs from assignment 1
 		 appt.getTitle();
 		 appt.getDescription();
@@ -73,12 +73,12 @@ public class ApptTest {
 
          // Next one fails because of bug from assignment 1
          appt.setStartMinute(10);
-         //appt.setStartDay(5);
-         //assertEquals(5, appt.getStartDay());
-         //appt.setStartMonth(10);
-         //assertEquals(10, appt.getStartMonth());
-         //appt.setStartYear(2018);
-         //assertEquals(2018, appt.getStartYear());
+         appt.setStartDay(5);
+         assertEquals(5, appt.getStartDay());
+         appt.setStartMonth(10);
+         assertEquals(10, appt.getStartMonth());
+         appt.setStartYear(2018);
+         assertEquals(2018, appt.getStartYear());
 
          // Next two fail because of bugs from assignment 1
          appt.setTitle("hello");
@@ -96,7 +96,7 @@ public class ApptTest {
 
          // Fails as a result of a bug from assignment 1
          appt.getRecurDays();
-         //assertEquals(null, appt.getRecurDays());
+         assertEquals(null, appt.getRecurDays());
 
          appt.isRecurring();
          assertTrue(appt.isRecurring());
@@ -117,8 +117,8 @@ public class ApptTest {
          appt.toString();
 
          //These tests will fail because of assignment 1 bug
-         //appt.setTitle(null);
-         //appt.setDescription(null);
+         appt.setTitle(null);
+         appt.setDescription(null);
 
          appt.setStartHour(24);
          assertFalse(appt.getValid());
@@ -152,8 +152,8 @@ public class ApptTest {
         appt.setRecurrence(arr, 10, 2, 10);
 
         //This will break because of a bug
-        //appt.setStartHour(0);
-        //assertFalse(appt.getValid());
+        appt.setStartHour(0);
+        assertFalse(appt.getValid());
 
         appt.setStartHour(10);
         appt.setStartMinute(500);
@@ -168,14 +168,14 @@ public class ApptTest {
         appt.setStartHour(10);
         appt.setStartMinute(5);
         appt.setStartDay(4);
-        //appt.setStartMonth(1); //Broken
+        appt.setStartMonth(1); //Broken
         assertTrue(appt.getValid());
 
         appt.setStartHour(10);
         appt.setStartMinute(5);
         appt.setStartDay(4);
         appt.setStartMonth(10);
-        //appt.setStartYear(2010); // Not checked
+        appt.setStartYear(2010); // Not checked
         assertTrue(appt.getValid());
 
         appt.setStartHour(25);
@@ -184,8 +184,8 @@ public class ApptTest {
         appt.setStartMonth(1);
         assertFalse(appt.getValid());
 
-        //appt.setDescription("hello");
-        //assertEquals("hello", appt.getDescription());
+        appt.setDescription("hello");
+        assertEquals("hello", appt.getDescription());
      }
 
     @Test
