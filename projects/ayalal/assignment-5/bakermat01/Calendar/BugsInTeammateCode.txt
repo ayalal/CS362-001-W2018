@@ -1,0 +1,24 @@
+Lorenzo Ayala
+CS 362 assignment-5
+Reported bugs in teammates code (all line numbers are from atom text editor). 
+
+Bug #1:
+	Located at line 92, startMinute is not set to minute value instead it is set to the hour value(this.startMinute= startHour)
+resulting in the wrong resulting value. Therefore when printed out the appointments will be incorrect and minutes will be limited 
+to the range of the hours. This will also affect how the appointments are sorted if they share the same starting hour and date, 
+resulting in an incorrectly sorted appointment list. 
+
+Bug #2:
+	Located at line 164, the if statement where (title != null) sets the title to "". This is a logic error as the statement
+should be (title == null) then set it to the empty string, not if the title actually has a string. The resulting symptom will be
+that any appointments created with a title will have that title wiped and replaced with an empty string giving the incorrect 
+appointment title. Also based on the logic of the method the title will always be empty, making it difficult for the user to 
+identify why an appointment was scheduled. 
+
+Bug #3:
+	Located at line 211, in the getDescription method the value that is returned is the title of the appointment and not the
+actual description. Obviously this is another logic error within the code and would make it difficult to get the desired description
+if needed. Also when the application is ran this will result in an empty description because we are returning the title of the 
+appointment which due to bug #2 will be empty, resulting in an empty description as well. This bug will make the application somewhat 
+useless to a user since they can set appointments but with no description, making it difficult to find the reason for that 
+particular appointment. 
