@@ -77,6 +77,137 @@ public class UrlValidatorTest extends TestCase {
 
    public void testIsValid()
    {
-        // Lorenzo do this part
+       long beginTime = Calendar.getInstance().getTimeInMillis();
+        long elapsed = Calendar.getInstance().getTimeInMillis() - beginTime;
+
+        String[] testSchemes = { //total of 8 schemes
+            "http://",
+            "h3t://",
+            "3ht://", //false scheme
+            "http:/",//false scheme
+            "http:",//false scheme
+            "http/",//false scheme
+            "://",//false scheme
+            ""
+        };
+
+        String[] testAuthorities = {//total of 10 Authorities
+          "www.google.com",
+          "go.com",
+          "go.au",
+          "0.0.0.0",
+          "255.255.255.255",
+          "256.256.256.256", //false testAuthority
+          "255.com",
+          "1.2.3.4.5", //false testAuthority
+          "go.1aa", //false testAuthority
+          ""//false testAuthority
+        };
+
+        String[] testPorts = {
+          ":80",
+          ":65535",
+          ":0",
+          "",
+          ":-1",//false testPort
+          ":65636",//false testPort
+          ":65a" //false testPort
+        };
+
+        String[] testPaths = {
+          "/test1",
+          "/t123",
+          "/$23",
+          "/..", //false path
+          "/../",//false path
+          "/test1/",
+          "",
+          "/test1/file",
+          "/..//file",//false path
+          "/test1//file" //false path
+        };
+
+        String[] testQuery = {
+          "?action=view",
+          "?action=edit&mode=up",
+          ""
+        };
+
+        System.out.println("testing the isValid method now...");
+
+        for(int iteration = 0; elapsed < testTimeout; iteration++)
+        {
+             Random rand = new Random();
+             int randomScheme;
+             int randomAuthority;
+             int randomPort;
+             int randomPath;
+             int randomQuery;
+
+                for(int i = 0; i < 999; i++)
+                {
+                  int randomCase = (int)(Math.random()*7 +1);
+                  UrlValidator uV = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+                  if(randomCase == 1)
+                  {
+                      randomScheme = (int)(Math.random() * 7);
+                      String testScheme = testSchemes[randomScheme];
+                      uV.isValid(testScheme);
+                  }
+                  else if(randomCase == 2)
+                  {
+                      randomAuthority = (int)(Math.random() * 9);
+                      String testAuths = testAuthorities[randomAuthority];
+                      uV.isValid(testAuths);
+                  }
+                  else if(randomCase == 3)
+                  {
+                      randomPort = (int)(Math.random() * 6);
+                      String testPrt = testPorts[randomPort];
+                      uV.isValid(testPrt);
+                  }
+                  else if(randomCase == 4)
+                  {
+                      randomPath = (int)(Math.random() * 9);
+                      String testPths = testPaths[randomPath];
+                      uV.isValid(testPths);
+                  }
+                  else if(randomCase == 5)
+                  {
+                      randomQuery = (int)(Math.random() * 2);
+                      String testQrs = testQuery[randomQuery];
+                      uV.isValid(testQrs);
+                  }
+                  else if(randomCase == 6)
+                  {
+                      randomScheme = (int)(Math.random() * 7);
+                      randomAuthority = (int)(Math.random() * 9);
+                      randomPath = (int)(Math.random() * 9);
+                      randomQuery = (int)(Math.random() * 2);
+
+                      String testURL = testSchemes[randomScheme] + testAuthorities[randomAuthority] + testPaths[randomPath] + testQuery[randomQuery];
+                      uV.isValid(testURL);
+                  }
+                  else if(randomCase == 7)
+                  {
+                      randomScheme = (int)(Math.random() * 7);
+                      randomAuthority = (int)(Math.random() * 9);
+                      randomPort = (int)(Math.random() * 6);
+                      randomPath = (int)(Math.random() * 9);
+                      randomQuery = (int)(Math.random() * 2);
+
+                      String testCompleteURL = testSchemes[randomScheme] + testAuthorities[randomAuthority] + testPorts[randomPort] + testPaths[randomPath] + testQuery[randomQuery];
+                      uV.isValid(testCompleteURL);
+                  }
+
+
+                }
+
+                elapsed = (Calendar.getInstance().getTimeInMillis() - beginTime);
+                if((iteration % 10000) == 0 && iteration != 0)
+                  System.out.println("elapsed time: " + elapsed + " of " + testTimeout);
+
+        }
    }
 }
