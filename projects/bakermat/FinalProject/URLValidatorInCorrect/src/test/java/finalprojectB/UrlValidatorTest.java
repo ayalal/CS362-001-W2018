@@ -3,6 +3,8 @@ package finalprojectB;
 
 import junit.framework.TestCase;
 import static org.junit.Assert.*;
+import java.util.Random;
+import java.util.Calendar;
 
 public class UrlValidatorTest extends TestCase {
 
