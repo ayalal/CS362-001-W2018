@@ -8,6 +8,8 @@ import java.util.Calendar;
 
 public class UrlValidatorTest extends TestCase {
 
+      private static final long testTimeout = 60 * 500 * 1;
+   
    public UrlValidatorTest(String testName) {
       super(testName);
    }
